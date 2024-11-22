@@ -1,0 +1,113 @@
+row:
+    rowIndex:
+        to_subject: studyresult
+transformers:
+    ##### Analysis properties #####
+    # Batch
+    - map:
+        columns:
+            - batches.batchId
+        to_property:
+            - batchId
+    - map:
+        columns:
+            - batches.name
+        to_property:
+            - batchName
+    # Algorithm
+    - map:
+        columns:
+            - batches.algorithmId
+        to_property:
+            - algorithmId
+    - map:
+        columns:
+            - batches.algorithmName
+        to_property:
+            - algorithmName
+    # AI model
+    - map:
+        columns:
+            - batches.aiModelId
+        to_property:
+            - aiModelId
+    - map:
+        columns:
+            - batches.aiModelName
+        to_property:
+            - aiModelName
+    # Owner
+    - map:
+        columns:
+            - batches.ownerId
+        to_property:
+            - ownerId
+    - map:
+        columns:
+            - batches.ownerName
+        to_property:
+            - ownerName
+    # Run
+    - map:
+        columns:
+            - ia-runs.iaRunId
+        to_property:
+            - iaRunId
+    - map:
+        columns:
+            - ia-runs.itemId
+        to_property:
+            - itemId
+    - map:
+        columns:
+            - ia-runs.itemName
+        to_property:
+            - itemName
+    - map:
+        columns:
+            - ia-runs.viewerUrl
+        to_property:
+            - viewerURL
+
+    ##### Prediction #####
+    - map:
+        columns:
+            - summary.classLabel
+        to_object: severityvalue
+        via_relation: has_attribute
+    # Properties
+    - map:
+        columns:
+            - summary.areaPercentage
+        to_property:
+            - areaPercentage
+        for_object:
+            - severityvalue
+    - map:
+        columns:
+            - summary.countPercentage
+        to_property:
+            - countPercentage
+        for_object:
+            - severityvalue
+    - map:
+        columns:
+            - summary.count
+        to_property:
+            - count
+        for_object:
+            - severityvalue
+    - map:
+        columns:
+            - summary.area_mm2
+        to_property:
+            - area_mm2
+        for_object:
+            - severityvalue
+    - map:
+        columns:
+            - summary.confidenceAvg
+        to_property:
+            - confidenceAvg
+        for_object:
+            - severityvalue

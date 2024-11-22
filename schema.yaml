@@ -1,0 +1,36 @@
+studyresult:
+    is_a: InformationContentEntity
+    represented_as: node
+    label_in_input: studyresult
+    properties:
+        batchId: str
+        batchName: str
+        algorithmId: str
+        algorithmName: str
+        aiModelId: str
+        aiModelName: str
+        ownerId: str
+        ownerName: str
+        iaRunId: str
+        itemId: str
+        itemName: str
+        viewerURL: str
+
+severityvalue:
+    is_a: Attribute
+    represented_as: node
+    label_in_input: severityvalue
+    properties:
+        areaPercentage: str
+        countPercentage: str
+        count: str
+        area_mm2: str
+        confidenceAvg: str
+
+has_attribute:
+    is_a: association
+    represented_as: edge
+    label_in_input: has_attribute
+    source: studyresult
+    target: severityvalue
+
